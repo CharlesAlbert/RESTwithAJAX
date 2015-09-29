@@ -1,16 +1,70 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
-        <title>TODO supply a title</title>
+
+        <title>QuoteLand</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/clientStyle.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <script>
+
+            $(document).ready(function () {
+                $("#getQuote").click(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "api/quote/1"
+                    }).done(function (fromServer) {
+                        $("#box4").val(fromServer.quote);
+
+
+                    })
+                });
+
+            });
+
+
+
+
+
+
+        </script>
+
     </head>
     <body>
-        <div id =""> </div>
+        <div id ="box1"> 
+            <img src="css/ql2.png" alt="QuoteLand" style="width:428px;height:119px;">
+        </div>
+        <br />
+        <br />
+        <div id ="box2"> 
+            <input id="getQuote" type="submit" value="Get random quote" name="button1" />
+        </div>
+
+        <br />
+
+        <div id ="box3"> 
+
+            <form >
+                <input type="text" id="input" placeholder="Enter new quote or ID to delete">
+                <input id="submitQuote" type="submit" value="Submit" name="button2" />
+            </form>
+
+
+        </div>
+
+        <div id ="box4"> 
+
+        </div>
+
+        <div id ="box5"> 
+
+        </div>
     </body>
+
+
+
 </html>
