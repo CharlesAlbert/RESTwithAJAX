@@ -16,20 +16,18 @@
                 $("#getQuote").click(function () {
                     $.ajax({
                         type: "GET",
-                        url: "api/quote/1"
+                        url: "api/quote/" + Math.floor((Math.random() * 3) + 1)
                     }).done(function (fromServer) {
-                        $("#box4").val(fromServer.quote);
 
+                        $("#box4").toggle(1000, function () {
+                            $("#box4").empty().append(fromServer.quote);
+                        });
 
+                        $("#box4").toggle(1000);
                     })
                 });
 
             });
-
-
-
-
-
 
         </script>
 
@@ -38,8 +36,10 @@
         <div id ="box1"> 
             <img src="css/ql2.png" alt="QuoteLand" style="width:428px;height:119px;">
         </div>
+
         <br />
         <br />
+
         <div id ="box2"> 
             <input id="getQuote" type="submit" value="Get random quote" name="button1" />
         </div>
@@ -47,24 +47,19 @@
         <br />
 
         <div id ="box3"> 
-
             <form >
                 <input type="text" id="input" placeholder="Enter new quote or ID to delete">
                 <input id="submitQuote" type="submit" value="Submit" name="button2" />
             </form>
-
-
         </div>
 
-        <div id ="box4"> 
+        <br />
 
+        <div id ="box4"> 
         </div>
 
         <div id ="box5"> 
-
         </div>
+
     </body>
-
-
-
 </html>
