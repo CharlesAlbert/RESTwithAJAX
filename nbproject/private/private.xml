@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/ExRestTest/web/index.html</file>
-            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/ExRestTest/src/java/rest/ApplicationConfig.java</file>
-            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/ExRestTest/src/java/rest/Quote.java</file>
-            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/ExRestTest/src/java/exceptions/QuoteNotFoundException.java</file>
-            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/ExRestTest/src/java/rest/QuoteNotFoundExMapper.java</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/src/java/rest/QuoteNotFoundExMapper.java</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/web/user/testGet.html</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/web/WEB-INF/web.xml</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/web/css/clientStyle.css</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/src/java/rest/ApplicationConfig.java</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/src/java/rest/GeneralExceptionMapper.java</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/web/admin/testPost.html</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/src/java/exceptions/QuoteNotFoundException.java</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/web/index.html</file>
+            <file>file:/home/sabre/Dropbox/3%20sem/Code/Java/block1/RESTwithAJAX/src/java/rest/Quote.java</file>
         </group>
     </open-files>
 </project-private>

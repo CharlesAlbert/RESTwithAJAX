@@ -17,7 +17,9 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.DELETE;
 import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -52,9 +54,7 @@ public class Quote {
     }
 
     /**
-     * Retrieves representation of an instance of rest.Quote
-     *
-     * @return an instance of java.lang.String
+     * READ - GET
      */
     @GET
     @Produces("application/json")
@@ -63,11 +63,12 @@ public class Quote {
 
         int newId = Integer.parseInt(id);
         
-        if(quotes.get(newId)==null)
-            throw new QuoteNotFoundException("No quote on id "+newId);
         
-        
-        
+
+        if (quotes.get(newId) == null) {
+            throw new QuoteNotFoundException("No quote on id " + newId);
+        }
+
         String quote = quotes.get(newId);
         JsonObject response = new JsonObject();
         response.addProperty("quote", quote);
@@ -76,10 +77,7 @@ public class Quote {
     }
 
     /**
-     * PUT method for updating or creating an instance of Quote
-     *
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
+     * UPDATE- PUT
      */
     @PUT
     @Path("{id}")
@@ -91,11 +89,11 @@ public class Quote {
 
         int newId = Integer.parseInt(id);
         String ting = request.get("quote").getAsString();
-        System.out.println("ren quote"+ting);
-        System.out.println("id"+id);
+        System.out.println("ren quote" + ting);
+        System.out.println("id" + id);
         quotes.put(newId, ting);
 
-       // if(quotes.get(quotes.size()+1)==null)
+        // if(quotes.get(quotes.size()+1)==null)
         JsonObject response = new JsonObject();
         response.addProperty("id", newId);
         response.addProperty("quote", ting);
@@ -103,6 +101,9 @@ public class Quote {
 
     }
 
+    /**
+     * CREATE - POST
+     */
     @POST
     public String createQuote(String content) {
 
@@ -110,13 +111,26 @@ public class Quote {
 
         String quote = request.get("quote").getAsString();
 
-       // if(quotes.get(quotes.size()+1)==null)
+        // if(quotes.get(quotes.size()+1)==null)
         quotes.put(quotes.size() + 1, quote);
 
         JsonObject response = new JsonObject();
         response.addProperty("id", quotes.size());
         response.addProperty("quote", quote);
         return gson.toJson(response);
+
+    }
+
+    /**
+     * DELETE
+     */
+    @DELETE
+    @Path("{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public void deleteQuote(@PathParam("id") String id) {
+
+        quotes.remove(Integer.parseInt(id));
 
     }
 

@@ -24,7 +24,24 @@
                         });
 
                         $("#box4").toggle(1000);
-                    })
+                    });
+                });
+                
+                
+                $("#submitQuote").click(function(){
+                    
+                   $.ajax({
+                        method: "POST",
+                        url: "api/quote/",
+                        contentType: "application/json",
+                        data: JSON.stringify({quote:$("#input").val()})
+                        
+                    }).done(function (fromServer) {
+                        
+                        alert("done");
+                        
+                    }); 
+                                       
                 });
 
             });
