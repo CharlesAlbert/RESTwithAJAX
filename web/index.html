@@ -13,45 +13,72 @@
         <script>
 
             $(document).ready(function () {
-                $("#getQuote").click(function () {
+               
+        $("#getQuote").click(function () {
                     $.ajax({
                         type: "GET",
-                        url: "api/quote/" + Math.floor((Math.random() * 3) + 1)
+                        url: "api/quote/random"
                     }).done(function (fromServer) {
-
-                        $("#box4").toggle(1000, function () {
-                            $("#box4").empty().append(fromServer.quote);
+                        
+                        $("#box6").toggle(1000, function () {
+                            $("#box6").empty().append(fromServer.quote);
                         });
 
-                        $("#box4").toggle(1000);
+                        $("#box6").toggle(1000);
+                    });
+                });
+           
+           
+                $("#getSpecificQuote").click(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "api/quote/" + $("#input3").val()
+//+ $("#input3").val()
+
+                    }).done(function(fromServer2) {
+
+                        $("#box6").toggle(1000, function () {
+                            $("#box6").empty().append(fromServer2.quote);
+                        });
+
+                        $("#box6").toggle(1000);
                     });
                 });
                 
                 
-                $("#submitQuote").click(function(){
-                    
-                   $.ajax({
+                $("#submitQuote").click(function () {
+
+                    $.ajax({
                         method: "POST",
                         url: "api/quote/",
                         contentType: "application/json",
-                        data: JSON.stringify({quote:$("#input").val()})
-                        
+                        data: JSON.stringify({quote: $("#input").val()})
+
                     }).done(function (fromServer) {
-                        
+
                         alert("done");
-                        
-                    }); 
-                                       
+
+                    });
+
+                }); //submit quote slutter
+
+
+                $("#deleteQuoteID").click(function () {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "api/quote/" + $("#input2").val()
+                    });
                 });
 
-            });
+
+            }); //Doc ready slutter
 
         </script>
 
     </head>
     <body>
         <div id ="box1"> 
-            <img src="css/ql2.png" alt="QuoteLand" style="width:428px;height:119px;">
+            <img src="css/ql3.png" alt="QuoteLand" style="width:630px;height:262px;">
         </div>
 
         <br />
@@ -63,9 +90,20 @@
 
         <br />
 
+        <div id ="box5"> 
+            <form >
+                <input type="text" id="input3" placeholder="Enter ID of quote">
+                <input id="getSpecificQuote" type="submit" value="Get ID" name="button4" />
+            </form>
+
+        </div>
+
+        <br />
+
+
         <div id ="box3"> 
             <form >
-                <input type="text" id="input" placeholder="Enter new quote or ID to delete">
+                <input type="text" id="input" placeholder="Enter new quote">
                 <input id="submitQuote" type="submit" value="Submit" name="button2" />
             </form>
         </div>
@@ -73,9 +111,20 @@
         <br />
 
         <div id ="box4"> 
+            <form >
+                <input type="text" id="input2" placeholder="Enter id to delete quote">
+                <input id="deleteQuoteID" type="submit" value="Delete" name="button3" />
+            </form>
+        </div>
+        <br />
+        <br />
+
+
+
+        <div id ="box6"> 
         </div>
 
-        <div id ="box5"> 
+        <div id ="box7"> 
         </div>
 
     </body>

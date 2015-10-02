@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;
 import exceptions.QuoteNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -58,21 +59,38 @@ public class Quote {
      */
     @GET
     @Produces("application/json")
-    @Path("{id}")
-    public String getJson(@PathParam("id") String id) throws QuoteNotFoundException {
+    @Path("/random")
+    public String getRandomQuote() throws QuoteNotFoundException {
 
-        int newId = Integer.parseInt(id);
-        
-        
+        int collectionLength = quotes.size() + 1;
 
-        if (quotes.get(newId) == null) {
-            throw new QuoteNotFoundException("No quote on id " + newId);
-        }
+        Random rand = new Random();
 
-        String quote = quotes.get(newId);
+        int rdmQuoteID = rand.nextInt(collectionLength) + 1;
+
+        String quote = quotes.get(rdmQuoteID);
         JsonObject response = new JsonObject();
         response.addProperty("quote", quote);
         return gson.toJson(response);
+
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("{id}")
+    public String getSpecificQuote(@PathParam("id") String id) throws QuoteNotFoundException {
+
+        int number = Integer.parseInt(id);
+        if (quotes.get(number) == null) {
+            throw new QuoteNotFoundException("No quote on id:" + number);
+        } else {
+
+            String quote = quotes.get(number);
+            JsonObject response = new JsonObject();
+            response.addProperty("quote", quote);
+            return gson.toJson(response);
+
+        }
 
     }
 
@@ -83,7 +101,7 @@ public class Quote {
     @Path("{id}")
     @Consumes("application/json")
     @Produces("application/json")
-    public String putJson(@PathParam("id") String id, String quote) {
+    public String putQuote(@PathParam("id") String id, String quote) {
 
         JsonObject request = parser.parse(quote).getAsJsonObject();
 
